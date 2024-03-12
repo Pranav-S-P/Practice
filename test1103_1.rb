@@ -1,48 +1,32 @@
-class Stackss
-    attr_accessor :lis
+require_relative 'stack_implement.rb'
 
-    def initialize
-        @lis=[]
-    end
-
-    def pushes(a)
-        @lis.append(a)
-    end
-
-    def popes()
-        if @lis.length==0
-            puts "\nNo element in the stack"
-        else
-            @lis.pop
-        end
-    end
-
-    def topes()
-        if @lis.length==0
-            puts "\nNo element in the stack"
-        else
-            puts "\nThe top of stack is #{@lis[@lis.length-1]}"
-        end
-    end
-end
-
-l=Stackss.new
+stack_object=Stackss.new
 while true
-    puts "What operation would u want to perform\n\n1.Push\n2.Pop\n3.Peak\n4.Quit\n\n Enter your Choice Number : "
-    b=gets.chomp()
-    case b
+    puts "What operation would u want to perform\n\n1.Push\n2.Pop\n3.Peak\n4.Size\n5.Quit\n\n Enter your Choice Number : "
+    choice_of_operation=gets.chomp()
+    case choice_of_operation
     when '1'
         puts "\nEnter the element to be Pushed into the stack: "
         inp=gets.chomp()
-        l.pushes(inp)
+        stack_object.push_stack(inp)
     when '2'
-        l.popes()
+        if stack_object.size_of_stack==0
+            puts "The stack is empty"
+        else
+            stack_object.pop_stack
+        end
     when '3'
-        l.topes()
+        if stack_object.size_of_stack==0
+            puts "The stack is empty"
+        else
+            puts "Top of Stack => #{stack_object.top_of_stack}"
+        end
     when '4'
-        puts "Quitting..."
+        puts "Size of stack = #{stack_object.size_of_stack}"
+    when '5'
+        puts "\n Quitting...\n\n"
         break
     else
-        "\nInvalid Choice!"
+        puts "\nInvalid Choice!\n\n"
     end
 end
