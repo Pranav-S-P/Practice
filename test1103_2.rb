@@ -18,11 +18,18 @@ def checks(l,a)
     return true
 end
 
-stack_object=Stackss.new
-puts "Enter the brackets string input here : "
-bracket_input=gets.chomp()
-if checks(stack_object,bracket_input)
-    puts "The Equation has balanced brackets"
-else
-    puts "The Equation does not have balanced brackets"
+# puts "Enter the brackets string input here : "
+# bracket_input=gets.chomp()
+
+file=File.open("input_bracket.txt")
+lines_data=file.readlines.map(&:chomp)
+seq_no=1
+lines_data.each do |each_line|
+    stack_object=Stackss.new
+    if checks(stack_object,each_line)
+        puts "#{seq_no}. The Equation has balanced brackets\n\n"
+    else
+        puts "#{seq_no}. The Equation does not have balanced brackets\n\n"
+    end
 end
+
